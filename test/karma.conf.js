@@ -5,8 +5,8 @@ module.exports = function ( config ) {
   var files = [
     '../bower_components/angular/angular.js',
     '../bower_components/angular-mocks/angular-mocks.js',
-    '../src/currency.js',
-    '../test/unit/currency.spec.js'
+    '../src/currency-filter.js',
+    '../test/unit/currency-filter.spec.js'
   ];
 
   config.set({

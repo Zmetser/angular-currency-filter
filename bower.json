@@ -5,7 +5,7 @@
     "Oliver Kovacs <zee@thezee.hu>"
   ],
   "description": "Extend angular's built in currency filter.",
-  "main": "./src/currency.js",
+  "main": "./src/currency-filter.js",
   "keywords": [
     "angularjs",
     "currency",
