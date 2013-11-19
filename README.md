@@ -1,15 +1,14 @@
 # Angular Currency Filter
 
-Extend angular's built in currency filter.
-
+Extend [angular's built in currency filter](http://docs.angularjs.org/api/ng.filter:currency).
 
 ## Description
-Formats a number as a currency (ie $1,234.56 or 914.3534€).
+Formats a number as a currency (ie *$1,234.56* or *914.3534€*).
 When no currency symbol is provided, default symbol for current locale is used.
 
 ## Usage
 
-Overwrites angular's default currency filter if module: `currencyFilter` is injected.
+Overwrites angular's default currency filter if module: `currencyFilter` is injected. *(complete example in the Example section)*
 
 ### In HTML Template Binding
     {{ currency_expression | currency[:symbol[:fractionSize[:suffixSymbol]]] }}
@@ -57,3 +56,29 @@ String: Formatted number.
                 var currency = $filter('currency');
                 $scope.price = currency(1234.4239, '€', 0, true);
             });
+
+
+## Install
+
+### Via bower
+
+    bower install --save angular-currency-filter
+
+Include `src/currency-filter.js` or `dist/currency-filter.min.js` to your project.
+
+    <script src="/bower_components/angular-currency-filter/dist/currency-filter.min.js"></script>
+    
+Don't forget to add `currencyFilter` module to app's dependecies.
+
+## Test && Build
+
+    $ npm install
+    $ bower install
+
+### Test
+
+    $ grunt test
+
+### Build
+
+    $ grunt build
