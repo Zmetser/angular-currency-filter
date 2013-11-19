@@ -1,0 +1,26 @@
+{
+  "name": "angular-currency-filter",
+  "version": "1.0.0",
+  "authors": [
+    "Oliver Kovacs <zee@thezee.hu>"
+  ],
+  "description": "Extend angular's built in currency filter.",
+  "main": "./src/currency.js",
+  "keywords": [
+    "angularjs",
+    "currency",
+    "filter"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.1",
+    "angular-mocks": "~1.2.1"
+  }
+}
