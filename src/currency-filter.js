@@ -3,7 +3,7 @@
   'use strict';
 
   var isBoolean = function ( obj ) {
-    return obj === true || obj === false || toString.call(obj) === '[object Boolean]';
+    return obj === true || obj === false || Object.prototype.toString.call(obj) === '[object Boolean]';
   };
 
   angular.module('currencyFilter', []).
