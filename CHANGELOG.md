@@ -1,6 +1,7 @@
 # 1.0.2
 
-Build of 1.0.1. Sorry about that :(
+- This release is a build of v1.0.1
+- **Breaking** rename /dist/currency-filter.min.js to /dist/currency-filter.min.map
 
 # 1.0.1
 
