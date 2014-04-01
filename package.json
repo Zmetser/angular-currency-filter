@@ -1,6 +1,6 @@
 {
   "name": "angular-currency-filter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Extend angular's built in currency filter.",
   "main": "./src/currency-filter.js",
   "directories": {

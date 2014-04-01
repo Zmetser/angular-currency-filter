@@ -1,3 +1,7 @@
+# 1.0.2
+
+Build of 1.0.1. Sorry about that :(
+
 # 1.0.1
 
 ## Bug Fixes
