@@ -1,6 +1,6 @@
 {
   "name": "angular-currency-filter",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Extend angular's built in currency filter.",
   "main": "./src/currency-filter.js",
   "directories": {
@@ -19,7 +19,7 @@
     "karma-script-launcher": "0.1.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt karma"
   },
   "repository": {
     "type": "git",

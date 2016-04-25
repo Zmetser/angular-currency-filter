@@ -45,17 +45,17 @@ String: Formatted number.
 
 ### Example
 
-#### In HTML Template Binding
+#### HTML Template Binding
 
     <span ng-bind="price | currency:'€':true"></span>
    
-#### In JavaScript 
+#### JavaScript 
 
     angular.module('app', ['currencyFilter']).
         controller('Ctrl', function ( $scope, $filter ) {
-                var currency = $filter('currency');
-                $scope.price = currency(1234.4239, '€', 0, true);
-            });
+            var currency = $filter('currency');
+            $scope.price = currency(1234.4239, '€', 0, true);
+        });
 
 
 ## Install
@@ -68,7 +68,7 @@ Include `src/currency-filter.js` or `dist/currency-filter.min.js` to your projec
 
     <script src="/bower_components/angular-currency-filter/dist/currency-filter.min.js"></script>
     
-Don't forget to add `currencyFilter` module to app's dependecies.
+Don't forget to add `currencyFilter` module to your app's dependecies.
 
 ## Test && Build
 

@@ -1,3 +1,6 @@
+# 2.0.0
+- **Breaking** If the amount is not a number, the formatter defaults to 0 instead of empty string. [Issue #5](https://github.com/Zmetser/angular-currency-filter/issues/5)
+
 # 1.0.2
 
 - This release is a build of v1.0.1
