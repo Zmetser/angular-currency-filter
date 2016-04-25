@@ -1,5 +1,7 @@
 # Angular Currency Filter
 
+[![Build Status](https://api.travis-ci.org/Zmetser/angular-currency-filter.png?branch=master)](https://travis-ci.org/Zmetser/angular-currency-filter)
+
 Extend [angular's built in currency filter](http://docs.angularjs.org/api/ng.filter:currency).
 
 ## Description
