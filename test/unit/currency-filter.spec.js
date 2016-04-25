@@ -3,7 +3,8 @@
 
 describe('currency', function() {
 
-  var currency;
+  var currency,
+    defaultAmount = '$0.00';
 
   beforeEach(module('currencyFilter'));
 
@@ -14,14 +15,17 @@ describe('currency', function() {
   describe('default functionality', function() {
 
     it('should do basic currency filtering', function() {
-      expect(currency(0)).toEqual('$0.00');
+      expect(currency(0)).toEqual(defaultAmount);
       expect(currency(-999)).toEqual('($999.00)');
       expect(currency(1234.5678, 'USD$')).toEqual('USD$1,234.57');
     });
 
-    it('should return empty string for non-numbers', function() {
-      expect(currency()).toBe('');
-      expect(currency('abc')).toBe('');
+    it('should fallback to 0 for non-numeric amount primitives', function() {
+      expect(currency()).toBe(defaultAmount);
+      expect(currency('123')).toBe(defaultAmount);
+      expect(currency('abc')).toBe(defaultAmount);
+      expect(currency(null)).toBe(defaultAmount);
+      expect(currency(false)).toBe(defaultAmount);
     });
 
     it('should handle zero and nearly-zero values properly', function() {
