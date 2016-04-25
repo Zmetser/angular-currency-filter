@@ -15,7 +15,8 @@
       // https://github.com/angular/angular.js/pull/3642
       formats.DEFAULT_PRECISION = angular.isUndefined(formats.DEFAULT_PRECISION) ? 2 : formats.DEFAULT_PRECISION;
       return function ( amount, currencySymbol, fractionSize, suffixSymbol ) {
-        if ( !angular.isNumber(amount) ) { return ''; }
+        //if ( !angular.isNumber(amount) ) { return ''; }
+        amount = !angular.isNumber(amount) ? amount : 0;
         if ( angular.isUndefined(currencySymbol) ) { currencySymbol = formats.CURRENCY_SYM; }
         var isNegative = amount < 0;
         var parts = [];
