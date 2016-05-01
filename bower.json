@@ -17,10 +17,7 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
-  ],
-  "devDependencies": {
-    "angular": "~1.2.1",
-    "angular-mocks": "~1.2.1"
-  }
+    "scripts",
+    "src"
+  ]
 }

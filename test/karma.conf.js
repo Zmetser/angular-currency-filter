@@ -3,8 +3,8 @@ module.exports = function ( config ) {
   'use strict';
 
   var files = [
-    '../bower_components/angular/angular.js',
-    '../bower_components/angular-mocks/angular-mocks.js',
+    '../node_modules/angular/lib/angular.js',
+    '../node_modules/angular-mocks/angular-mocks.js',
     '../src/currency-filter.js',
     '../test/unit/currency-filter.spec.js'
   ];
