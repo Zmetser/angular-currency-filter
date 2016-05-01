@@ -1,3 +1,6 @@
+# 2.1.0
+- Adds the `customFormat` parameter to set the group and decimals separators. [Issue #4](https://github.com/Zmetser/angular-currency-filter/issues/4)
+
 # 2.0.0
 - **Breaking** If the amount is not a number, the formatter defaults to 0 instead of empty string. [Issue #5](https://github.com/Zmetser/angular-currency-filter/issues/5)
 
