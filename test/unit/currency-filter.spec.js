@@ -52,18 +52,82 @@ describe('currency', function() {
       expect(currency(1234.42)).toEqual('$1,234.42');
     });
 
-    it('should test API', function() {
+  });
+
+  describe('test API consistency', function() {
+    var groupSep = {GROUP_SEP: ' '};
+
+    it('with common use cases', function () {
       expect(currency(1234.42, '€', true)).toEqual('1,234.42€');
       expect(currency(1234, '$', 0)).toEqual('$1,234');
     });
 
+    it('with no amount', function () {
+      expect(currency()).toEqual('$0.00');
+      expect(currency(null, 'USD$')).toEqual('USD$0.00');
+      expect(currency(null, 'USD$', 1)).toEqual('USD$0.0');
+      expect(currency(null, '€', 1, true)).toEqual('0.0€');
+      expect(currency(null, '€', true)).toEqual('0.00€');
+    });
+
+    describe('group separator as', function () {
+      it('second param', function () {
+        expect(currency(1000, groupSep)).toEqual('$1 000.00');
+      });
+
+      it('last param', function () {
+        expect(currency(1000, '€', 1, true, groupSep)).toEqual('1 000.0€');
+      });
+    });
+  });
+
+  describe('group separator', function() {
+
+    it('should fall back to default angluar locale', function () {
+      expect(currency(1234.42)).toEqual('$1,234.42');
+    });
+
+    it('should change the group separator to dash', function () {
+      var groupSep = {GROUP_SEP: ' '};
+
+      expect(currency(123.42, groupSep)).toEqual('$123.42');
+      expect(currency(1234.42, groupSep)).toEqual('$1 234.42');
+      expect(currency(123456789.42, groupSep)).toEqual('$123 456 789.42');
+    });
+
+    it('should remove the group separator', function () {
+      var groupSep = {GROUP_SEP: ''};
+
+      expect(currency(123.42, groupSep)).toEqual('$123.42');
+      expect(currency(1234.42, groupSep)).toEqual('$1234.42');
+      expect(currency(123456789.42, groupSep)).toEqual('$123456789.42');
+    });
+
+  });
+
+  describe('decimal separator', function() {
+
+    it('should fall back to default angluar locale', function () {
+      expect(currency(1234.42)).toEqual('$1,234.42');
+    });
+
+    it('should change the group separator to dash', function () {
+      var decimalSep = {DECIMAL_SEP: ','};
+
+      expect(currency(1.42, decimalSep)).toEqual('$1,42');
+    });
   });
 
   describe('demo', function() {
 
     it('should verify demo use cases', function() {
+      var formats = {
+        GROUP_SEP: ' ',
+        DECIMAL_SEP: ','
+      };
+
       // With all parameters
-      expect(currency(1234.4239, '€', 0, true)).toEqual('1,234€');
+      expect(currency(1234.4239, '€', 1, true, formats)).toEqual('1 234,4€');
 
       // With missing fraction size
       expect(currency(1234.4239, '€', true)).toEqual('1,234.42€');
@@ -73,6 +137,9 @@ describe('currency', function() {
 
       // Only with symbol
       expect(currency(1234.4239, '$')).toEqual('$1,234.42');
+
+      // Only with custom group and decimal separators
+      expect(currency(1234.4239, formats)).toEqual('$1 234,42');
     });
 
   });
