@@ -25,7 +25,7 @@ Param         | Type    | Details
 amount        | number  | Input to filter.
 symbol        | string  | Currency symbol or identifier to be displayed. Falls back to [ng.$locale](https://code.angularjs.org/1.2.1/docs/api/ng.$locale).
 fractionSize  | number  | Number of decimal places to round the number to. Falls back to [ng.$locale](https://code.angularjs.org/1.2.1/docs/api/ng.$locale)
-suffixSymbol  | boolean | If set to true the currency symbol will be placed after the amount.
+suffixSymbol  | boolean or string | If set to true the currency symbol will be placed after the amount.  If passed as a string, will apply currencySymbol as a prefix and suffixSymbol as a suffix
 customFormat  | object  | Customize group and decimal separators (`GROUP_SEP`, `DECIMAL_SEP`) Both falls back to [ng.$locale](https://code.angularjs.org/1.2.1/docs/api/ng.$locale).
 
 #### Returns
@@ -42,8 +42,14 @@ String: Formatted number.
     // With all parameters
     expect(currency(1234.4239, '€', 1, true, formats)).toEqual('1 234,4€');
 
+    // With all parameters, using string suffix
+    expect(currency(1234.4239, '€', 1, 'EUR', formats)).toEqual('€1 234,4EUR');
+
     // With missing fraction size
     expect(currency(1234.4239, '€', true)).toEqual('1,234.42€');
+
+    // With missing fraction size, using string suffix
+    expect(currency(1234.4239, '€', 'EUR')).toEqual('€1,234.42EUR');
 
     // With fraction size only
     expect(currency(1234.4239, '$', 3)).toEqual('$1,234.424');
@@ -59,13 +65,15 @@ String: Formatted number.
 #### HTML Template Binding
 
     <span ng-bind="price | currency:'€':true"></span> <!-- 1234.42€ -->
-   
-#### JavaScript 
+    <span ng-bind="price | currency:'$':' USD'"></span> <!-- $1234.42 USD -->
+
+#### JavaScript
 
     angular.module('app', ['currencyFilter']).
         controller('Ctrl', function ( $scope, $filter ) {
             var currency = $filter('currency');
             $scope.price = currency(1234.4239, '€', 0, true); // 1234€
+            $scope.price = currency(1234.4239, '$', 0, ' USD'); // $1234 USD
         });
 
 
@@ -78,7 +86,7 @@ String: Formatted number.
 Include `src/currency-filter.js` or `dist/currency-filter.min.js` to your project.
 
     <script src="/bower_components/angular-currency-filter/dist/currency-filter.min.js"></script>
-    
+
 Don't forget to add `currencyFilter` module to your app's dependecies.
 
 ## Test && Build
