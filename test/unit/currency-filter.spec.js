@@ -52,6 +52,10 @@ describe('currency', function() {
       expect(currency(1234.42)).toEqual('$1,234.42');
     });
 
+    it('should allow suffixSymbol to be a string', function() {
+      expect(currency(1234.42, '€', 0, 'EUR')).toEqual('€1,234EUR');
+      expect(currency(1234.42, '$', 2, 'USD')).toEqual('$1,234.42USD');
+    });
   });
 
   describe('test API consistency', function() {
@@ -129,8 +133,14 @@ describe('currency', function() {
       // With all parameters
       expect(currency(1234.4239, '€', 1, true, formats)).toEqual('1 234,4€');
 
+      // With all parameters, using string suffix
+      expect(currency(1234.4239, '€', 1, 'EUR', formats)).toEqual('€1 234,4EUR');
+
       // With missing fraction size
       expect(currency(1234.4239, '€', true)).toEqual('1,234.42€');
+
+      // With missing fraction size, using string suffix
+      expect(currency(1234.4239, '€', 'EUR')).toEqual('€1,234.42EUR');
 
       // With fraction size only
       expect(currency(1234.4239, '$', 3)).toEqual('$1,234.424');

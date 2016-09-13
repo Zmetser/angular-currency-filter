@@ -21,8 +21,11 @@
         var isNegative = amount < 0;
         var parts = [];
 
-        suffixSymbol = isBoolean(fractionSize) ? fractionSize : suffixSymbol;
-        fractionSize = isBoolean(fractionSize) ? formats.DEFAULT_PRECISION : fractionSize;
+        if (isBoolean(fractionSize) || angular.isString(fractionSize)) {
+            suffixSymbol = fractionSize;
+            fractionSize = formats.DEFAULT_PRECISION;
+        }
+
         fractionSize = angular.isUndefined(fractionSize) ? formats.DEFAULT_PRECISION : fractionSize;
 
         amount = Math.abs(amount);
@@ -43,8 +46,16 @@
         formattedNumber = formattedNumber.join('');
 
         parts.push(isNegative ? pattern.negPre : pattern.posPre);
-        parts.push(!suffixSymbol ? currencySymbol : formattedNumber);
-        parts.push(suffixSymbol ? currencySymbol : formattedNumber);
+
+        if (angular.isString(suffixSymbol)) {
+            parts.push(currencySymbol);
+            parts.push(formattedNumber);
+            parts.push(suffixSymbol);
+        } else {
+            parts.push(!suffixSymbol ? currencySymbol : formattedNumber);
+            parts.push(suffixSymbol ? currencySymbol : formattedNumber);
+        }
+
         parts.push(isNegative ? pattern.negSuf : pattern.posSuf);
 
         return parts.join('').replace(/\u00A4/g, '');
