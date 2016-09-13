@@ -1,3 +1,6 @@
+# 2.2.0
+ - Allowing the specification of an optional suffix string. Thanks @brophdawg11 [Issue #9](https://github.com/Zmetser/angular-currency-filter/issues/9)
+
 # 2.1.0
 - Adds the `customFormat` parameter to set the group and decimals separators. [Issue #4](https://github.com/Zmetser/angular-currency-filter/issues/4)
 

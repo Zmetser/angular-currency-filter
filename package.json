@@ -1,6 +1,6 @@
 {
   "name": "angular-currency-filter",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Extend angular's built in currency filter.",
   "main": "./src/currency-filter.js",
   "directories": {
@@ -31,6 +31,9 @@
     "filter"
   ],
   "author": "Oliver Kovacs <zee@thezee.hu>",
+  "contributors": [
+    "Matt Brophy <matt@brophy.org> (https://github.com/brophdawg11)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Zmetser/angular-currency-filter/issues"
